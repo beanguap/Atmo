@@ -1,4 +1,4 @@
-import "./MediaCard.css";
+import "../styles/MediaCard.css";
 import { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 

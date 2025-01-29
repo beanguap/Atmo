@@ -1,5 +1,5 @@
 import { useState } from "react";
-import mediaData from "../assets/data/mediaData";
+import mediaData from "../data/mediaData";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");

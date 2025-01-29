@@ -1,0 +1,38 @@
+.shelf-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .shelf {
+    background: white;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .shelf-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .shelf-items {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+  }
+  
+  .shelf-items::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .shelf-items > div {
+    flex: 0 0 auto;
+    width: 160px;
+  }
+  
