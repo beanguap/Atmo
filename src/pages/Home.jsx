@@ -1,5 +1,6 @@
-import mediaData from "../data/mediaData.json";
-import MediaCard from "../components/MediaCard.jsx";
+import mediaData from "../assets/data/mediaData.js";
+
+import MediaCard from "../components/MediaCard/MediaCard.jsx";
 
 const Home = () => {
   return (
