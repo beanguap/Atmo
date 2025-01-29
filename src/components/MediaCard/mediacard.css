@@ -6,7 +6,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   width: 160px;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, height 0.3s ease-in-out;
   cursor: pointer;
 }
 
@@ -16,6 +16,10 @@
 
 .media-card:active {
   transform: scale(0.98);
+}
+
+.media-card.expanded {
+  height: auto;
 }
 
 .media-cover {
@@ -56,4 +60,32 @@
   font-size: 14px;
   font-weight: 600;
   color: #f39c12;
+}
+
+.media-details {
+  display: none;
+  padding: 10px;
+  font-size: 14px;
+  color: #555;
+  background: #f5f5f7;
+  border-top: 1px solid #ddd;
+}
+
+.media-card.expanded .media-details {
+  display: block;
+}
+
+.close-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: #007aff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.close-button:hover {
+  background: #005ecb;
 }
