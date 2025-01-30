@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
 
-atmo is a sleek and intuitive media tracking web app designed to help users catalog and discover video games, movies, music, and books. Users can curate shelves, like and rate media, and generate visual tree diagrams to showcase their interests. With intelligent recommendations based on tags, atmo makes it easier than ever to find your next favorite media experience.
+Atmo is a sleek and intuitive media tracking web app designed to help users catalog and discover video games, movies, music, and books. Users can curate shelves, like and rate media, and generate visual tree diagrams to showcase their interests. With intelligent recommendations based on tags, atmo makes it easier than ever to find your next favorite media experience.
 
 ## ✨ Features
 
