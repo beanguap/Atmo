@@ -1,6 +1,7 @@
 .search-container {
   position: relative;
   padding: 12px 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", sans-serif;
 }
 
 .search-bar {

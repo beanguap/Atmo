@@ -11,6 +11,7 @@
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   transition: all 0.2s ease-in-out;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", sans-serif;
 }
 
 .nav-item {
