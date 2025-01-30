@@ -1,3 +1,4 @@
+import "../styles/ShelfView.css";
 import MediaCard from "./MediaCard";
 import mediaData from "../data/mediaData";
 
