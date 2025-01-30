@@ -1,29 +1,26 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Home, Search, BookOpen, User } from "lucide-react";
+import "../styles/Navbar.css";
 
 const Navbar = () => {
-  const location = useLocation();
-  const [activeTab, setActiveTab] = useState(location.pathname);
-
   return (
     <nav className="navbar">
-      <Link to="/" className={`nav-item ${activeTab === "/" ? "active" : ""}`} onClick={() => setActiveTab("/")}>
+      <NavLink to="/" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
         <Home size={24} />
         <span>Home</span>
-      </Link>
-      <Link to="/search" className={`nav-item ${activeTab === "/search" ? "active" : ""}`} onClick={() => setActiveTab("/search")}>
+      </NavLink>
+      <NavLink to="/search" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
         <Search size={24} />
         <span>Search</span>
-      </Link>
-      <Link to="/library" className={`nav-item ${activeTab === "/library" ? "active" : ""}`} onClick={() => setActiveTab("/library")}>
+      </NavLink>
+      <NavLink to="/library" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
         <BookOpen size={24} />
         <span>Library</span>
-      </Link>
-      <Link to="/profile" className={`nav-item ${activeTab === "/profile" ? "active" : ""}`} onClick={() => setActiveTab("/profile")}>
+      </NavLink>
+      <NavLink to="/profile" className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}>
         <User size={24} />
         <span>Profile</span>
-      </Link>
+      </NavLink>
     </nav>
   );
 };

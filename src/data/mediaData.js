@@ -1,10 +1,10 @@
 // Import images
-import bloodborneCover from '../assets/images/bloodborne.jpg';
-import nosferatuCover from '../assets/images/nosferatu.jpg';
-import betweenFlamesCover from '../assets/images/between-flames.jpg';
-import witchCover from '../assets/images/witch.jpg';
-import interstellarCover from '../assets/images/interstellar.jpg';
-import soulCover from '../assets/images/soul.jpg';
+import bloodborneCover from '../assets/images/Bloodborne.jpg';
+import nosferatuCover from '../assets/images/Nosferatu.jpg';
+import betweenFlamesCover from '../assets/images/BetweenTwoFlames.jpg';
+import witchCover from '../assets/images/TheVVitch.jpg';
+import interstellarCover from '../assets/images/Interstellar.jpg';
+import soulCover from '../assets/images/Soul.jpg';
 
 const mediaData = [
   {
