@@ -3,6 +3,8 @@ import MediaCard from "./MediaCard";
 import mediaData from "../data/mediaData";
 
 const ShelfView = () => {
+  console.log('mediaData:', mediaData); // Add this line to debug
+
   // Group media by type
   const shelves = {
     "Video Games": mediaData.filter((item) => item.type === "Video Game"),
@@ -10,6 +12,8 @@ const ShelfView = () => {
     "Books": mediaData.filter((item) => item.type === "Book"),
     "Music": mediaData.filter((item) => item.type === "Music"),
   };
+
+  console.log('shelves:', shelves); // Add this line to debug
 
   return (
     <div className="shelf-container">
