@@ -22,6 +22,28 @@
   min-height: auto;
 }
 
+.favorite-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #8E8E93;
+  transition: color 0.2s ease-in-out;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.favorite-button.favorited {
+  color: #FF3B30;
+}
+
+.favorite-button:hover {
+  color: #FF3B30;
+}
+
+
+
+
 /* Image - Ensures size consistency */
 .media-cover {
   width: 50px;
