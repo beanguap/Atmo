@@ -3,31 +3,51 @@ import { Heart } from "lucide-react";
 import PropTypes from "prop-types";
 import "../styles/MediaCard.css";
 
-const MediaCard = ({ title, cover, type, rating, details, onFavorite }) => {
+const tagColors = {
+  "Gothic": "#4B0082",
+  "Dark Fantasy": "#6A0DAD",
+  "Eldritch Horror": "#8B0000",
+  "Sci-Fi": "#008080",
+  "Jazz": "#FFD700",
+  "Feel-Good": "#FFA500",
+  "Slow Burn": "#B22222",
+  "Supernatural": "#483D8B",
+  "Psychological": "#800000",
+};
+
+const MediaCard = ({ title, cover, type, rating, details, tags }) => {
   const [isFavorited, setIsFavorited] = useState(false);
 
-  // Load favorite status from localStorage
   useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setIsFavorited(savedFavorites.some((media) => media.title === title));
   }, [title]);
 
-  const handleFavorite = () => {
-    setIsFavorited((prev) => !prev);
-    onFavorite({ title, cover, type, rating, details });
-  };
-
   return (
     <div className="media-card">
+      {/* Favorite Button */}
+      <button className={`favorite-button ${isFavorited ? "favorited" : ""}`}>
+        <Heart size={18} />
+      </button>
+
+      {/* Cover Image */}
       <img src={cover} alt={title} className="media-cover" />
+
+      {/* Media Info */}
       <div className="media-info">
         <h3 className="media-title">{title}</h3>
         <p className="media-type">{type}</p>
         <p className="media-rating">⭐ {rating}</p>
+
+        {/* Tags */}
+        <div className="tags">
+          {tags.map((tag) => (
+            <span key={tag} className="media-tag" style={{ backgroundColor: tagColors[tag] || "#555" }}>
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
-      <button className={`favorite-button ${isFavorited ? "favorited" : ""}`} onClick={handleFavorite}>
-        <Heart size={20} />
-      </button>
     </div>
   );
 };
@@ -38,7 +58,7 @@ MediaCard.propTypes = {
   type: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   details: PropTypes.string.isRequired,
-  onFavorite: PropTypes.func.isRequired,
+  tags: PropTypes.array.isRequired,
 };
 
 export default MediaCard;

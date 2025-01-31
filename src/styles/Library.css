@@ -1,0 +1,114 @@
+/* --- Filter Container --- */
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 12px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* --- Dropdown Menu --- */
+  .dropdown-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  
+  select {
+    appearance: none;
+    padding: 12px 16px;
+    width: 100%;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    background: #f5f5f7;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  select:hover {
+    background: #e5e5ea;
+  }
+  
+  /* --- Tag Buttons --- */
+  .tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  
+  .tag-button {
+    padding: 8px 14px;
+    border-radius: 14px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    background: #e5e5ea;
+    color: #1c1c1e;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tag-button:hover {
+    background: #d1d1d6;
+  }
+  
+  .tag-button.active {
+    background: black;
+    color: white;
+  }
+  
+  /* --- Media Shelves --- */
+  .shelf {
+    background: white;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+  }
+  
+  .shelf-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #1C1C1E;
+  }
+  
+  .shelf-items {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+  }
+  
+  .shelf-items::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* --- Mobile Adjustments --- */
+  @media (max-width: 768px) {
+    .filter-container {
+      padding: 10px;
+    }
+  
+    select {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .tag-button {
+      font-size: 13px;
+      padding: 6px 12px;
+    }
+  }
+  

@@ -1,3 +1,4 @@
+/* --- Base Media Card Styles --- */
 .media-card {
   position: relative;
   display: flex;
@@ -6,130 +7,108 @@
   padding: 12px;
   border-radius: 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
   width: 100%;
-  min-height: 60px;
+  min-height: 70px;
   overflow: hidden;
 }
 
-/* Expand the card while keeping the content inside */
-.media-card.expanded {
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 16px;
-  min-height: auto;
+/* --- Hover Interaction --- */
+.media-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.favorite-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #8E8E93;
-  transition: color 0.2s ease-in-out;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.favorite-button.favorited {
-  color: #FF3B30;
-}
-
-.favorite-button:hover {
-  color: #FF3B30;
-}
-
-
-
-
-/* Image - Ensures size consistency */
+/* --- Cover Image --- */
 .media-cover {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 12px;
   object-fit: cover;
-  margin-right: 12px;
+  margin-right: 10px;
 }
 
-/* Media info container */
+/* --- Media Info Section --- */
 .media-info {
-  display: flex;
   flex: 1;
+  display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 /* Title */
 .media-title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   color: #1C1C1E;
+  margin-bottom: 4px;
 }
 
-/* Media type */
+/* Media Type */
 .media-type {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 13px;
   color: #8E8E93;
   margin-bottom: 2px;
 }
 
 /* Rating */
 .media-rating {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: #FF9500;
   display: flex;
   align-items: center;
 }
 
-/* Expanded Details */
-.media-details {
-  display: none;
-  width: 100%;
-  font-size: 14px;
-  margin-top: 10px;
+/* --- Tag Styling --- */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
 }
 
-/* Show details when expanded */
-.media-card.expanded .media-details {
-  display: block;
-  padding-top: 8px;
-  text-align: left;
-}
-
-/* Close button styling */
-.close-button {
-  background: #ff3b30;
+.media-tag {
+  padding: 5px 9px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
   color: white;
+  text-transform: uppercase;
+}
+
+/* --- Favorite Button (Heart) --- */
+.favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
   border: none;
-  padding: 6px 10px;
-  border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
-  display: block;
-  margin-top: 8px;
+  color: #8E8E93;
+  transition: color 0.2s ease-in-out, transform 0.1s ease-in-out;
 }
 
-.close-button:hover {
-  background: #d32f2f;
+.favorite-button:hover {
+  color: #FF3B30;
+  transform: scale(1.1);
 }
 
-/* Smartphone Optimization */
+.favorite-button.favorited {
+  color: #FF3B30;
+  transform: scale(1.1);
+}
+
+/* --- Mobile Adjustments --- */
 @media (max-width: 768px) {
   .media-card {
     padding: 10px;
   }
 
-  .media-card.expanded {
-    padding: 14px;
-  }
-
   .media-cover {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
   }
 
   .media-title {
@@ -144,12 +123,12 @@
     font-size: 12px;
   }
 
-  .media-details {
-    font-size: 13px;
+  .tags {
+    margin-top: 4px;
   }
 
-  .close-button {
-    font-size: 13px;
+  .media-tag {
+    font-size: 10px;
     padding: 5px 8px;
   }
 }
@@ -176,12 +155,12 @@
     font-size: 11px;
   }
 
-  .media-details {
-    font-size: 12px;
+  .tags {
+    margin-top: 3px;
   }
 
-  .close-button {
-    font-size: 12px;
+  .media-tag {
+    font-size: 9px;
     padding: 4px 6px;
   }
 }

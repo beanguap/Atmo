@@ -1,59 +1,57 @@
-// Import images
-import bloodborneCover from '../assets/images/Bloodborne.jpg';
-import nosferatuCover from '../assets/images/Nosferatu.jpg';
-import betweenFlamesCover from '../assets/images/BetweenTwoFlames.jpg';
-import witchCover from '../assets/images/TheVVitch.jpg';
-import interstellarCover from '../assets/images/Interstellar.jpg';
-import soulCover from '../assets/images/Soul.jpg';
-
 const mediaData = [
   {
     id: 1,
     title: "Bloodborne",
-    cover: bloodborneCover,
+    cover: "src/assets/images/BloodBorne.jpg",
     type: "Video Game",
     rating: 4.9,
-    details: "An action RPG set in a dark, gothic world filled with eldritch horrors and challenging gameplay."
+    details: "An action RPG set in a dark, gothic world filled with eldritch horrors.",
+    tags: ["Gothic", "Dark Fantasy", "Eldritch Horror"]
   },
   {
     id: 2,
     title: "Nosferatu",
-    cover: nosferatuCover,
+    cover: "src/assets/images/Nosferatu.jpg",
     type: "Movie",
     rating: 4.7,
-    details: "A 1922 silent horror film that tells the story of Count Orlok, a vampire preying on a small town."
+    details: "A 1922 silent horror film featuring Count Orlok, an eerie vampire.",
+    tags: ["Gothic Horror", "Silent Film", "German Expressionism"]
   },
   {
     id: 3,
     title: "Between Two Flames",
-    cover: betweenFlamesCover,
+    cover: "src/assets/images/BetweenTwoFlames.jpg",
     type: "Book",
     rating: 4.6,
-    details: "A gripping novel exploring themes of identity, love, and existential dread."
+    details: "A novel exploring themes of identity, love, and existential dread.",
+    tags: ["Psychological", "Philosophical", "Surreal"]
   },
   {
     id: 4,
     title: "The VVitch",
-    cover: witchCover,
+    cover: "src/assets/images/TheVVitch.jpg",
     type: "Movie",
     rating: 4.5,
-    details: "A psychological horror film set in 1630s New England, delving into themes of paranoia and witchcraft."
+    details: "A psychological horror film set in Puritan New England.",
+    tags: ["Folk Horror", "Slow Burn", "Supernatural"]
   },
   {
     id: 5,
     title: "Interstellar",
-    cover: interstellarCover,
+    cover: "src/assets/images/Interstellar.jpg",
     type: "Movie",
     rating: 4.8,
-    details: "A sci-fi epic directed by Christopher Nolan, exploring space travel, black holes, and human survival."
+    details: "A sci-fi epic exploring space travel, black holes, and human survival.",
+    tags: ["Sci-Fi", "Space", "Epic"]
   },
   {
     id: 6,
     title: "Soul",
-    cover: soulCover,
+    cover: "src/assets/images/Soul.jpg",
     type: "Movie",
     rating: 4.9,
-    details: "A heartfelt Pixar film about a jazz musician's journey through the afterlife and self-discovery."
+    details: "A heartfelt Pixar film about jazz, life, and self-discovery.",
+    tags: ["Feel-Good", "Jazz", "Existential"]
   }
 ];
 
