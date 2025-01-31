@@ -1,9 +1,21 @@
+:root {
+  --primary-color: #1C1C1E;
+  --background-color: #F5F5F7;
+  --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.2s;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", sans-serif;
-  background-color: #F5F5F7;
-  color: #1C1C1E;
+  background-color: var(--background-color);
+  color: var(--primary-color);
   margin: 0;
   padding: 0;
+}
+
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 * {
@@ -12,6 +24,22 @@ body {
   box-sizing: border-box;
 }
 
+/* Better touch handling for mobile */
+@media (hover: none) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 .home-container {
   padding-bottom: 60px; /* Prevents Navbar overlap */
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #F5F5F7;
+    --background-color: #1C1C1E;
+    --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
 }

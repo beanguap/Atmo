@@ -3,24 +3,32 @@ import { Search } from "lucide-react";
 import mediaData from "../data/mediaData";
 import "../styles/SearchBar.css";
 
+// Add debounce for search
+const debounce = (fn, delay) => {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn(...args), delay);
+  };
+};
+
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
   const searchRef = useRef(null);
 
-  const handleSearch = (e) => {
-    const value = e.target.value.toLowerCase();
+  const handleSearch = debounce((value) => {
     setQuery(value);
     if (value === "") {
       setFilteredResults([]);
     } else {
       setFilteredResults(
         mediaData.filter((media) =>
-          media.title.toLowerCase().includes(value)
+          media.title.toLowerCase().includes(value.toLowerCase())
         )
       );
     }
-  };
+  }, 300);
 
   // Hide results when clicking outside
   useEffect(() => {
@@ -43,7 +51,7 @@ const SearchBar = () => {
           type="text"
           placeholder="Search media..."
           value={query}
-          onChange={handleSearch}
+          onChange={(e) => handleSearch(e.target.value.toLowerCase())}
           className="search-input"
         />
       </div>

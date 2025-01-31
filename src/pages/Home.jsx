@@ -51,7 +51,7 @@ const Home = () => {
 
           // Only include genres that appear in at least two items
           const filteredTags = Object.entries(tagCounts)
-            .filter(([_, count]) => count > 1) // Only show shared genres
+            .filter(([, count]) => count > 1) // Only show shared genres
             .map(([tag]) => tag);
 
           return (

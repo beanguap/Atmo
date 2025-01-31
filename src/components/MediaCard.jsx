@@ -17,6 +17,7 @@ const tagColors = {
 
 const MediaCard = ({ title, cover, type, rating, details, tags, onFavorite }) => {
   const [isFavorited, setIsFavorited] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -34,10 +35,7 @@ const MediaCard = ({ title, cover, type, rating, details, tags, onFavorite }) =>
 
     localStorage.setItem("favorites", JSON.stringify(savedFavorites));
     setIsFavorited(!isFavorited);
-
-    // Force Home to update
     if (onFavorite) onFavorite();
-    window.dispatchEvent(new Event("favoritesUpdated"));
   };
 
   return (
@@ -48,7 +46,13 @@ const MediaCard = ({ title, cover, type, rating, details, tags, onFavorite }) =>
       </button>
 
       {/* Cover Image */}
-      <img src={cover} alt={title} className="media-cover" />
+      <img 
+        src={cover} 
+        alt={title} 
+        className={`media-cover ${imageLoaded ? 'loaded' : ''}`}
+        onLoad={() => setImageLoaded(true)}
+        loading="lazy" // Add lazy loading
+      />
 
       {/* Media Info */}
       <div className="media-info">
