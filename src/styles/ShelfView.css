@@ -1,9 +1,8 @@
 .shelf-container {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", sans-serif;
+  padding: 16px;
+  background: #F5F5F7;
+  border-radius: 16px;
+  padding-bottom: 80px; /* Extra space to prevent last item from being hidden */
 }
 
 .shelf {
@@ -11,7 +10,13 @@
   padding: 16px;
   border-radius: 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
   overflow: hidden;
+}
+
+/* Ensure last shelf has extra margin before the nav bar */
+.shelf:last-child {
+  margin-bottom: 90px; /* Prevent last section from being hidden behind navbar */
 }
 
 .shelf-title {

@@ -3,14 +3,22 @@
   --background-color: #F5F5F7;
   --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   --transition-speed: 0.2s;
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", sans-serif;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", sans-serif;
+  font-family: var(--font-family);
   background-color: var(--background-color);
   color: var(--primary-color);
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Apply font globally */
+html, body, button, input, select, textarea {
+  font-family: var(--font-family);
 }
 
 /* Add smooth scrolling */
@@ -18,21 +26,30 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Reset styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Better touch handling for mobile */
+/* Prevent navbar overlap */
+.home-container, .library-container {
+  padding-bottom: 80px;
+}
+
+/* Links should inherit font and color */
+a {
+  font-family: var(--font-family);
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Ensure touch-friendly interactions */
 @media (hover: none) {
   * {
     -webkit-tap-highlight-color: transparent;
   }
-}
-
-.home-container {
-  padding-bottom: 60px; /* Prevents Navbar overlap */
 }
 
 /* Dark mode support */
@@ -41,5 +58,10 @@ html {
     --primary-color: #F5F5F7;
     --background-color: #1C1C1E;
     --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  body {
+    background-color: var(--background-color);
+    color: var(--primary-color);
   }
 }
