@@ -6,6 +6,7 @@ import mediaData from "../data/mediaData";
 const Library = () => {
   const [selectedType, setSelectedType] = useState("All");
   const [selectedTag, setSelectedTag] = useState(null);
+  const [showTags, setShowTags] = useState(false); // Toggle state for tags
 
   // Extract unique tags from all media
   const allTags = [...new Set(mediaData.flatMap((media) => media.tags))];
@@ -30,6 +31,7 @@ const Library = () => {
 
       {/* Filter Options */}
       <div className="filter-container">
+        {/* Always Visible Media Type Dropdown */}
         <div className="dropdown-wrapper">
           <select onChange={(e) => setSelectedType(e.target.value)} value={selectedType}>
             <option value="All">All Media</option>
@@ -40,17 +42,25 @@ const Library = () => {
           </select>
         </div>
 
-        <div className="tag-container">
-          {allTags.map((tag) => (
-            <button
-              key={tag}
-              className={`tag-button ${selectedTag === tag ? "active" : ""}`}
-              onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
+        {/* Collapsible Tag Filters */}
+        {showTags && (
+          <div className="tag-container">
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                className={`tag-button ${selectedTag === tag ? "active" : ""}`}
+                onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Toggle Button */}
+        <button className="toggle-button" onClick={() => setShowTags(!showTags)}>
+          {showTags ? "Hide Filters" : "Show More Filters"}
+        </button>
       </div>
 
       {/* Media Shelves */}
