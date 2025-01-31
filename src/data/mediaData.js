@@ -52,6 +52,24 @@ const mediaData = [
     rating: 4.9,
     details: "A heartfelt Pixar film about jazz, life, and self-discovery.",
     tags: ["Feel-Good", "Jazz", "Existential"]
+  },
+  {
+    id: 7,
+    title: "Resident Evil Village",
+    cover: "src/assets/images/ResidentEvilVillage.jpg",
+    type: "Video Game",
+    rating: 4.7,
+    details: "A survival horror game where Ethan Winters faces terrifying creatures in a mysterious European village.",
+    tags: ["Gothic Horror", "Survival Horror", "Supernatural"]
+  },
+  {
+    id: 8,
+    title: "Crimson Peak",
+    cover: "src/assets/images/CrimsonPeak.jpg",
+    type: "Movie",
+    rating: 4.3,
+    details: "A gothic horror romance by Guillermo del Toro, featuring haunted mansions and dark family secrets.",
+    tags: ["Gothic Horror", "Supernatural", "Romantic Horror"]
   }
 ];
 

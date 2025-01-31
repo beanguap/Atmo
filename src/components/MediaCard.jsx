@@ -15,7 +15,7 @@ const tagColors = {
   "Psychological": "#800000",
 };
 
-const MediaCard = ({ title, cover, type, rating, details, tags }) => {
+const MediaCard = ({ title, cover, type, rating, details, tags, onFavorite }) => {
   const [isFavorited, setIsFavorited] = useState(false);
 
   useEffect(() => {
@@ -23,10 +23,27 @@ const MediaCard = ({ title, cover, type, rating, details, tags }) => {
     setIsFavorited(savedFavorites.some((media) => media.title === title));
   }, [title]);
 
+  const handleFavorite = () => {
+    let savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (isFavorited) {
+      savedFavorites = savedFavorites.filter((media) => media.title !== title);
+    } else {
+      savedFavorites.push({ title, cover, type, rating, details, tags });
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(savedFavorites));
+    setIsFavorited(!isFavorited);
+
+    // Force Home to update
+    if (onFavorite) onFavorite();
+    window.dispatchEvent(new Event("favoritesUpdated"));
+  };
+
   return (
     <div className="media-card">
       {/* Favorite Button */}
-      <button className={`favorite-button ${isFavorited ? "favorited" : ""}`}>
+      <button className={`favorite-button ${isFavorited ? "favorited" : ""}`} onClick={handleFavorite}>
         <Heart size={18} />
       </button>
 
@@ -59,6 +76,7 @@ MediaCard.propTypes = {
   rating: PropTypes.number.isRequired,
   details: PropTypes.string.isRequired,
   tags: PropTypes.array.isRequired,
+  onFavorite: PropTypes.func,
 };
 
 export default MediaCard;
