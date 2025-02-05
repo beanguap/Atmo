@@ -3,7 +3,7 @@
   --background-color: #F5F5F7;
   --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   --transition-speed: 0.2s;
-  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", sans-serif;
+  --font-family: 'Inter', 'Nunito', sans-serif;
 }
 
 body {
