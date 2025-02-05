@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Heart } from "lucide-react";
 import PropTypes from "prop-types";
 import "../styles/MediaCard.css";
+
+const LOCAL_STORAGE_KEY = "favorites";
 
 const tagColors = {
   "Gothic": "#4B0082",
@@ -19,13 +21,25 @@ const MediaCard = ({ title, cover, type, rating, details, tags, onFavorite }) =>
   const [isFavorited, setIsFavorited] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  // Helper function to safely load favorites from localStorage
+  const loadFavorites = () => {
+    try {
+      return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+    } catch (error) {
+      console.error("Failed to load favorites from localStorage:", error);
+      return [];
+    }
+  };
+
+  // Check if this media is already favorited
   useEffect(() => {
-    const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const savedFavorites = loadFavorites();
     setIsFavorited(savedFavorites.some((media) => media.title === title));
   }, [title]);
 
-  const handleFavorite = () => {
-    let savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  // Toggle favorite status with memoized callback
+  const handleFavorite = useCallback(() => {
+    let savedFavorites = loadFavorites();
 
     if (isFavorited) {
       savedFavorites = savedFavorites.filter((media) => media.title !== title);
@@ -33,15 +47,25 @@ const MediaCard = ({ title, cover, type, rating, details, tags, onFavorite }) =>
       savedFavorites.push({ title, cover, type, rating, details, tags });
     }
 
-    localStorage.setItem("favorites", JSON.stringify(savedFavorites));
-    setIsFavorited(!isFavorited);
+    try {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(savedFavorites));
+    } catch (error) {
+      console.error("Failed to update favorites in localStorage:", error);
+    }
+
+    setIsFavorited((prev) => !prev);
     if (onFavorite) onFavorite();
-  };
+  }, [isFavorited, title, cover, type, rating, details, tags, onFavorite]);
 
   return (
     <div className="media-card">
       {/* Favorite Button */}
-      <button className={`favorite-button ${isFavorited ? "favorited" : ""}`} onClick={handleFavorite}>
+      <button
+        type="button"
+        className={`favorite-button ${isFavorited ? "favorited" : ""}`}
+        onClick={handleFavorite}
+        aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
+      >
         <Heart size={18} />
       </button>
 
@@ -49,9 +73,9 @@ const MediaCard = ({ title, cover, type, rating, details, tags, onFavorite }) =>
       <img 
         src={cover} 
         alt={title} 
-        className={`media-cover ${imageLoaded ? 'loaded' : ''}`}
+        className={`media-cover ${imageLoaded ? "loaded" : ""}`}
         onLoad={() => setImageLoaded(true)}
-        loading="lazy" // Add lazy loading
+        loading="lazy"
       />
 
       {/* Media Info */}
@@ -63,7 +87,11 @@ const MediaCard = ({ title, cover, type, rating, details, tags, onFavorite }) =>
         {/* Tags */}
         <div className="tags">
           {tags.map((tag) => (
-            <span key={tag} className="media-tag" style={{ backgroundColor: tagColors[tag] || "#555" }}>
+            <span
+              key={tag}
+              className="media-tag"
+              style={{ backgroundColor: tagColors[tag] || "#555" }}
+            >
               {tag}
             </span>
           ))}
@@ -79,7 +107,7 @@ MediaCard.propTypes = {
   type: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   details: PropTypes.string.isRequired,
-  tags: PropTypes.array.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   onFavorite: PropTypes.func,
 };
 
