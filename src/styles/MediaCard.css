@@ -14,6 +14,12 @@
   overflow: hidden;
 }
 
+/* Apply the global font to the media card and all its descendants */
+.media-card, 
+.media-card * {
+  font-family: var(--font-family);
+}
+
 /* --- Hover Interaction --- */
 .media-card:hover {
   transform: scale(1.02);
