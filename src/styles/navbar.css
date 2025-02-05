@@ -13,7 +13,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 28px;
   transition: all 0.2s ease-in-out;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", sans-serif;
+  font-family: var(--font-family);
   margin-bottom: env(safe-area-inset-bottom, 0);
   z-index: 1000; /* Ensure navbar stays on top */
 }
